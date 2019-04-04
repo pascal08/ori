@@ -1,0 +1,25 @@
+{
+    "name": "pascal/router",
+    "license": "MIT",
+    "description": "Router Component",
+    "authors": [
+        {
+            "name": "Pascal Lubbers",
+            "email": "pascallubbers8@hotmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Pascal\\Router\\": "src"
+        }
+    },
+    "require": {
+        "php": "^7.2",
+        "psr/container": "^1.0"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^0.10.2",
+        "phpunit/phpunit": "^7.3",
+        "squizlabs/php_codesniffer": "^3.3"
+    }
+}
