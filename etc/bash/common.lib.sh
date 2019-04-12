@@ -66,7 +66,12 @@ print_warning()
 # Argument 1: Array
 print_array()
 {
-    printf ' - %s\n' "$@"
+    printf " - %s\n" "$@"
+}
+
+print_empty_line()
+{
+    printf "\n"
 }
 
 # Argument 1: Text

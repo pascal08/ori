@@ -9,28 +9,27 @@ PROJECT_DIR="$(dirname "$( cd ${CURRENT_DIR} && pwd )")"
 # Absolute path to packages directory
 PACKAGE_DIR="${PROJECT_DIR}/packages/"
 
+# Import common functions
 source "${PROJECT_DIR}/etc/bash/common.lib.sh"
 
 # Argument 1: Package path
-test_package() {
+test_package()
+{
     local exit_code=0
 
     print_header "Testing" "$(basename "$1")"
 
-    cd "$1" 2>/dev/null
+    run_command "cd $1"
     exit_on_error "Cannot change current directory to $1"
 
-    if [[ "$(composer run-script --list 2> /dev/null | awk '{ print $1 }' | grep -c ^test$)" = "0" ]]; then
-        run_phpunit "$1" || exit_code=$?
-    else
-        run_command "composer test" || exit_code=$?
-    fi
+    run_phpunit "$1" || exit_code=$?
 
     return ${exit_code}
 }
 
 # Argument 1: Package path
-run_phpunit() {
+run_phpunit()
+{
     local phpunit
     if [[ ! -e "phpunit.xml.dist" && ! -e "phpunit.xml" ]]; then
         return 0
@@ -45,7 +44,8 @@ run_phpunit() {
     run_command "${phpunit} --colors=always"
 }
 
-display_help_message() {
+display_help_message()
+{
     print_info "Usage: $0 <package paths or names>"
 
     print_info "Packages:"
@@ -53,37 +53,48 @@ display_help_message() {
     echo "$(locate_packages | package_path_to_package_name)"
 }
 
-main() {
-    local packages=() options=() package_path
-
-    while [[ $# -gt 0 ]]; do
+# Arguments: $#
+read_input()
+{
+    if [[ $# -gt 0 ]]; then
         case "$1" in
             --help)
                 display_help_message
                 exit 0
             ;;
-            -*)
-                print_error "Unknown option \"$1\""
-                exit 1
-            ;;
             *)
-               packages+=("$1")
+                echo "$1"
             ;;
         esac
-
-        shift
-    done
+    fi
 
     if [[ "${packages[@]}" = "" ]]; then
         display_help_message
         exit 1
     fi
+}
+
+# Argument 1: Package name
+main()
+{
+    local packages_string="$(locate_packages | package_path_to_package_name)"
+    local packages=(${packages_string// / })
+    local package_path
+
+    package="$(read_input "$@")"
+
+    if [[ ! -z ${package} ]]; then
+        packages=(${package})
+    fi
 
     for package in "${packages[@]}"; do
         package_path="$(cast_package_argument_to_package_path "${package}")"
+
         exit_on_error "Package \"${package}\" is not found"
 
         test_package "${package_path}" "${options[*]}"
+
+        print_empty_line
     done
 }
 
