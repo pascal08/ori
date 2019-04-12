@@ -10,8 +10,6 @@ use Pascal\Container\Exception\NotCallableException;
 use Pascal\Container\Exception\UnknownTypeException;
 use PHPUnit\Framework\TestCase;
 
-include 'somefile.txt';
-
 class ContainerTest extends TestCase
 {
 
