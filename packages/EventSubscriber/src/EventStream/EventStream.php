@@ -26,7 +26,7 @@ class EventStream
     /**
      * @param mixed $eventResults
      */
-    protected function addEventResults($eventResults)
+    protected function addEventResults($eventResults): void
     {
         foreach ($eventResults as $eventResult) {
             $this->addEventResult($eventResult);
@@ -36,7 +36,7 @@ class EventStream
     /**
      * @param mixed $eventResult
      */
-    protected function addEventResult($eventResult)
+    protected function addEventResult($eventResult): void
     {
         $this->eventResults[] = $eventResult;
     }

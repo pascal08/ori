@@ -24,7 +24,7 @@ abstract class EventSubscriber implements EventSubscriberInterface
      * @param EventInterface $event
      * @return EventSubscriber
      */
-    public static function createSubscriberFromEvent(EventInterface $event)
+    public static function createSubscriberFromEvent(EventInterface $event): EventSubscriber
     {
         $subscriber = new static;
 
@@ -36,7 +36,7 @@ abstract class EventSubscriber implements EventSubscriberInterface
     /**
      * @param EventInterface $event
      */
-    private function subscribeTo(EventInterface $event)
+    private function subscribeTo(EventInterface $event): void
     {
         $this->subscribedTo = get_class($event);
     }
