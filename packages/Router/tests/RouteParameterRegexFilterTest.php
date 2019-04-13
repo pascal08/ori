@@ -1,5 +1,7 @@
 <?php
 
+namespace Pascal\Router\Tests;
+
 use Pascal\Router\CouldNotParseRouteException;
 use Pascal\Router\RouteParameterRegexFilter;
 use PHPUnit\Framework\TestCase;
@@ -38,5 +40,4 @@ class RouteParameterRegexFilterTest extends TestCase
             '{userId:\d+}' => 'john',
         ]);
     }
-
 }

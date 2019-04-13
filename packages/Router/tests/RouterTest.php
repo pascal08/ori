@@ -1,5 +1,7 @@
 <?php
 
+namespace Pascal\Router\Tests;
+
 use Pascal\Router\Action;
 use Pascal\Router\ActionFactory;
 use Pascal\Router\NoRouteFoundException;

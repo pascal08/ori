@@ -2,7 +2,6 @@
 
 namespace Pascal\EventSubscriber\Tests;
 
-
 use Pascal\EventSubscriber\EventBus\EventBus;
 use Pascal\EventSubscriber\Event\EventInterface;
 use Pascal\EventSubscriber\EventStream\EventStream;
@@ -52,7 +51,6 @@ class EventBusTest extends TestCase
         self::assertEquals('EventMock handled by EventSubscriber.', $eventStream->pop());
         self::assertEquals('EventMock handled by AnotherEventSubscriber.', $eventStream->pop());
     }
-
 }
 
 class EventSubscriberForEventMock extends EventSubscriber

@@ -30,7 +30,6 @@ class EventSubscriberTest extends TestCase
 
         self::assertEquals(null, $eventSubscriber->handle($anotherEvent));
     }
-
 }
 
 class EventMock implements EventInterface

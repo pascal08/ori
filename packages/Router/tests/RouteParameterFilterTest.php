@@ -1,5 +1,7 @@
 <?php
 
+namespace Pascal\Router\Tests;
+
 use Pascal\Router\RouteParameterFilter;
 use PHPUnit\Framework\TestCase;
 
@@ -21,5 +23,4 @@ class RouteParameterFilterTest extends TestCase
 
         $this->assertEquals(['organizationId' => '42', 'userId' => '1337'], $routeArguments);
     }
-
 }

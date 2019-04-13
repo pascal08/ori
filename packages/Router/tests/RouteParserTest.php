@@ -1,5 +1,7 @@
 <?php
 
+namespace Pascal\Router\Tests;
+
 use Pascal\Router\CouldNotParseRouteException;
 use Pascal\Router\Route;
 use Pascal\Router\RouteArguments;
@@ -126,5 +128,4 @@ class RouteParserTest extends TestCase
 
         $this->assertEquals(new RouteArguments(['organizationId' => '42', 'userId' => '1337']), $routeArguments);
     }
-
 }

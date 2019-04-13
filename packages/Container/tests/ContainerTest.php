@@ -56,7 +56,7 @@ class ContainerTest extends TestCase
     {
         $container = new Container;
 
-        $container->bind(DummyInterface::class, [DummyObject::class, function() {
+        $container->bind(DummyInterface::class, [DummyObject::class, function () {
             return new AnotherDummyObject;
         }]);
 
@@ -134,7 +134,7 @@ class ContainerTest extends TestCase
     {
         $container = new Container;
 
-        $file = fopen(__DIR__ . '/somefile.txt','r');
+        $file = fopen(__DIR__ . '/somefile.txt', 'r');
 
         $container->bind(DummyInterface::class, $file);
 
@@ -150,7 +150,7 @@ class ContainerTest extends TestCase
 
         $container = new Container;
 
-        $file = fopen(__DIR__ . '/somefile.txt','r');
+        $file = fopen(__DIR__ . '/somefile.txt', 'r');
         fclose($file);
 
         $container->bind(DummyInterface::class, $file);
@@ -329,7 +329,7 @@ class ContainerTest extends TestCase
 
         $container->bind(DummyInterface::class, DummyObjectWithScalarConstructorArguments::class);
 
-        $container->bind( 'name', 'Jack Sparrow');
+        $container->bind('name', 'Jack Sparrow');
 
         $instance = $container->create(DummyInterface::class);
 
@@ -345,7 +345,7 @@ class ContainerTest extends TestCase
 
         $container->bind(DummyInterface::class, DummyObject::class);
 
-        $container->bind(DummyObjectWithMethods::class, function() {
+        $container->bind(DummyObjectWithMethods::class, function () {
             return new DummyObjectWithMethods;
         });
 
@@ -361,11 +361,11 @@ class ContainerTest extends TestCase
 
         $container->bind(DummyInterface::class, DummyObject::class);
 
-        $container->bind(DummyObjectWithMethods::class, function() {
+        $container->bind(DummyObjectWithMethods::class, function () {
             return new DummyObjectWithMethods;
         });
 
-        $container->bind( 'name', 'Jack Sparrow');
+        $container->bind('name', 'Jack Sparrow');
 
         $result = $container->call(DummyObjectWithMethods::class, 'someMethodWithScalarArguments');
 
@@ -379,7 +379,7 @@ class ContainerTest extends TestCase
 
         $container = new Container();
 
-        $container->bind(DummyObjectWithMethods::class, function() {
+        $container->bind(DummyObjectWithMethods::class, function () {
             return new DummyObjectWithMethods;
         });
 
@@ -395,7 +395,7 @@ class ContainerTest extends TestCase
 
         $container = new Container();
 
-        $container->bind(DummyObjectWithMethods::class, function() {
+        $container->bind(DummyObjectWithMethods::class, function () {
             return new DummyObjectWithMethods;
         });
 
@@ -409,11 +409,11 @@ class ContainerTest extends TestCase
 
         $container->bind(DummyInterface::class, DummyObject::class);
 
-        $container->bind(DummyObjectWithMethod::class, function() {
+        $container->bind(DummyObjectWithMethod::class, function () {
             return new DummyObjectWithMethod;
         });
 
-        $result = $container->call(function(DummyInterface $dummy) {
+        $result = $container->call(function (DummyInterface $dummy) {
             return $dummy;
         }, 'someMethodCall');
 
