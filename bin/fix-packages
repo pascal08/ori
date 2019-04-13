@@ -30,18 +30,14 @@ run_linter_package()
 # Argument 1: Package path
 run_phpcbf()
 {
-    local phpcbf
-    if [[ ! -e "phpcs.xml.dist" && ! -e "phpcs.xml" ]]; then
-        return 0
-    fi
+    local phpcbf="$(get_binary phpcbf)"
 
-    phpcbf="$(get_binary phpcbf)"
     if [ "$?" != "0" ]; then
         print_error "phpcbf binary not found, make sure you included it in require-dev"
         return 1
     fi
 
-    run_command "${phpcbf} -p"
+    run_command "${phpcbf} -p $1"
 }
 
 display_help_message()
