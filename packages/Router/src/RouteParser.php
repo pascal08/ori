@@ -80,7 +80,9 @@ class RouteParser
      */
     private function mapUriToRoute(Route $route, string $uri): array
     {
-        if ($map = array_combine($this->getPathParts((string)$route), $this->getPathParts($uri))) {
+        $map = array_combine($this->getPathParts((string)$route), $this->getPathParts($uri));
+
+        if (is_array($map)) {
             return $map;
         }
         

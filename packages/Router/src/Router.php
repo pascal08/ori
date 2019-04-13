@@ -45,7 +45,7 @@ class Router
      * @param string   $route
      * @param callable $callable
      */
-    public function bind(string $method, string $route, callable $callable)
+    public function bind(string $method, string $route, callable $callable): void
     {
         $this->bindings[] = new Binding(
             $method,

@@ -17,11 +17,11 @@ class RouteParameterRegexFilter implements RouteParameterFilterInterface
         foreach ($mappedRoute as $key => $value) {
             list($parameterKey, $parameterRegex) = $this->matchParameter($key);
 
-            if (!$parameterKey) {
+            if ($parameterKey === null) {
                 continue;
             }
 
-            if ($parameterRegex && !preg_match("/$parameterRegex/", $value)) {
+            if ($parameterRegex !== null && preg_match("/$parameterRegex/", $value) !== 1) {
                 throw new CouldNotParseRouteException(
                     sprintf('The value %s did not comply to the regex constraint %s.', $value, $parameterRegex)
                 );
