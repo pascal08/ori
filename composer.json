@@ -26,5 +26,12 @@
         "pascal/event-subscriber": "self.version",
         "pascal/router": "self.version",
         "pascal/task-scheduler": "self.version"
+    },
+    "scripts": {
+        "all": "composer analyse && composer fix && composer lint && composer test",
+        "analyse": "bin/analyse-packages",
+        "fix": "bin/fix-packages",
+        "lint": "bin/lint-packages",
+        "test": "bin/test-packages"
     }
 }
