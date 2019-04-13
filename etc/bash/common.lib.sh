@@ -97,7 +97,7 @@ get_binary()
 
 locate_packages()
 {
-    find "${PACKAGE_DIR}" -type f -name composer.json -exec dirname "{}" \;
+    find "${PACKAGE_DIR}" -mindepth 2 -maxdepth 2 -type f -name composer.json -exec dirname "{}" \;
 }
 
 find_packages()
