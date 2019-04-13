@@ -1,0 +1,101 @@
+#!/usr/bin/env bash
+
+# Directory of this file
+CURRENT_DIR="$(dirname "${BASH_SOURCE[0]}")"
+
+# Absolute path to project directory
+PROJECT_DIR="$(dirname "$( cd ${CURRENT_DIR} && pwd )")"
+
+# Absolute path to packages directory
+PACKAGE_DIR="${PROJECT_DIR}/packages/"
+
+# Import common functions
+source "${PROJECT_DIR}/etc/bash/common.lib.sh"
+
+# Argument 1: Package path
+run_linter_package()
+{
+    local exit_code=0
+
+    print_header "Linting" "$(basename "$1")"
+
+    run_command "cd $1"
+    exit_on_error "Cannot change current directory to $1"
+
+    run_phpcbf "$1" || exit_code=$?
+
+    return ${exit_code}
+}
+
+# Argument 1: Package path
+run_phpcbf()
+{
+    local phpcbf
+    if [[ ! -e "phpcs.xml.dist" && ! -e "phpcs.xml" ]]; then
+        return 0
+    fi
+
+    phpcbf="$(get_binary phpcbf)"
+    if [ "$?" != "0" ]; then
+        print_error "phpcbf binary not found, make sure you included it in require-dev"
+        return 1
+    fi
+
+    run_command "${phpcbf} -p"
+}
+
+display_help_message()
+{
+    print_info "Usage: $0 <package paths or names>"
+
+    print_info "Packages:"
+
+    echo "$(locate_packages | package_path_to_package_name)"
+}
+
+# Arguments: $#
+read_input()
+{
+    if [[ $# -gt 0 ]]; then
+        case "$1" in
+            --help)
+                display_help_message
+                exit 0
+            ;;
+            *)
+                echo "$1"
+            ;;
+        esac
+    fi
+
+    if [[ "${packages[@]}" = "" ]]; then
+        display_help_message
+        exit 1
+    fi
+}
+
+# Argument 1: Package name
+main()
+{
+    local packages_string="$(locate_packages | package_path_to_package_name)"
+    local packages=(${packages_string// / })
+    local package_path
+
+    package="$(read_input "$@")"
+
+    if [[ ! -z ${package} ]]; then
+        packages=(${package})
+    fi
+
+    for package in "${packages[@]}"; do
+        package_path="$(cast_package_argument_to_package_path "${package}")"
+
+        exit_on_error "Package \"${package}\" is not found"
+
+        run_linter_package "${package_path}" "${options[*]}"
+
+        print_empty_line
+    done
+}
+
+main "$@"
