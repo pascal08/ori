@@ -10,6 +10,10 @@ env: MONOREPO_SPLIT=true
 install:
 - composer install
 
+script:
+# echoing something to prevent Travis from running default commands
+- echo ":)"
+
 after_script:
 # split monorepo to packages - only on merge to master
 - |
