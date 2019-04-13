@@ -64,7 +64,7 @@ class Container extends AbstractContainer
      * @param string $abstract
      * @param mixed $concrete
      */
-    public function bind(string $abstract, $concrete)
+    public function bind(string $abstract, $concrete): void
     {
         $this->binds[$abstract] = $concrete;
     }
