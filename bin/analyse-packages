@@ -30,12 +30,8 @@ run_static_analysis_package()
 # Argument 1: Package path
 run_phpstan()
 {
-    local phpstan
-    if [[ ! -e "phpstan.neon.dist" && ! -e "phpstan.neon" ]]; then
-        return 0
-    fi
+    local phpstan="$(get_binary phpstan)"
 
-    phpstan="$(get_binary phpstan)"
     if [ "$?" != "0" ]; then
         print_error "PHPStan binary not found, make sure you included it in require-dev"
         return 1
