@@ -1,6 +1,7 @@
 {
     "require": {
-        "php": "^7.2",
+        "php": "^7.1",
+        "ext-simplexml": "*",
         "psr/container": "^1.0",
         "mtdowling/cron-expression": "^1.2",
         "symfony/process": "^4.2",
@@ -15,6 +16,7 @@
     },
     "autoload": {
         "psr-4": {
+            "Pascal\\CI\\": "packages/CI/src",
             "Pascal\\Container\\": "packages/Container/src",
             "Pascal\\EventSubscriber\\": "packages/EventSubscriber/src",
             "Pascal\\Router\\": "packages/Router/src",
@@ -22,6 +24,7 @@
         }
     },
     "replace": {
+        "pascal/ci": "self.version",
         "pascal/container": "self.version",
         "pascal/event-subscriber": "self.version",
         "pascal/router": "self.version",
