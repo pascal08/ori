@@ -34,14 +34,5 @@ $container->bind(SomeInterface::class, function() {
     return new SomeImplementation();
 });
 
-// 6. Resolve the arguments from the WebController's function
-$controller = new ReflectionClass(WebController::class);
-$method = $controller->getMethod('home');
-$parameters = $method->getParameters();
-$resolvedInstances = array_map(function($parameter) use ($container) {
-    /** @var \ReflectionParameter $parameter */
-    return $container->get($parameter->getClass()->getName());
-}, $parameters);
-
-// 7. Call the WebController with the resolved instances
-call_user_func_array([WebController::class, 'home'], $resolvedInstances);
+// 6. Call the WebController and let it resolve its dependencies
+$container->call(WebController::class, 'home');
