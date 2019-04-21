@@ -9,7 +9,7 @@ use Pascal\Container\Container\Container;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-// 1. Define the interface that will at as the abstract
+// 1. Define the interface that will act as the abstract
 interface SomeInterface {}
 
 // 2. Define the class that will act as the implementation
