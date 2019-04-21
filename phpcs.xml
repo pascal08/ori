@@ -4,6 +4,7 @@
     <file>packages</file>
 
     <exclude-pattern>packages/*/build</exclude-pattern>
+    <exclude-pattern>packages/*/examples</exclude-pattern>
     <exclude-pattern>packages/*/vendor</exclude-pattern>
 
     <arg name="tab-width" value="4"/>
