@@ -31,10 +31,24 @@ class XmlConfigurationLoader implements ConfigurationLoaderInterface
     private function loadXML(string $filePath = null)
     {
         foreach ([$filePath, 'phpci.xml', 'phpci.xml.dist'] as $file) {
-            if (\file_exists($file)) {
-                $this->xml = simplexml_load_file(\realpath('phpci.xml'));
-                return;
+            if (!is_string($file) || !\file_exists($file)) {
+                continue;
             }
+
+            $realPath = \realpath($file);
+
+            if($realPath === false) {
+                continue;
+            }
+
+            $xml = simplexml_load_file($realPath);
+
+            if(!($xml instanceof \SimpleXMLElement)) {
+                continue;
+            }
+
+            $this->xml = $xml;
+            return;
         }
 
         throw new CouldNotFindConfigurationException(
