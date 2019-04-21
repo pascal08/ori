@@ -1,5 +1,7 @@
 <?php
 
+namespace Pascal\CI\Tests;
+
 use Pascal\CI\XmlConfigurationLoader;
 use PHPUnit\Framework\TestCase;
 

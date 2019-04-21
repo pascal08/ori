@@ -30,7 +30,7 @@ class XmlConfigurationLoader implements ConfigurationLoaderInterface
      */
     private function loadXML(string $filePath = null)
     {
-        foreach([$filePath, 'phpci.xml', 'phpci.xml.dist'] as $file) {
+        foreach ([$filePath, 'phpci.xml', 'phpci.xml.dist'] as $file) {
             if (\file_exists($file)) {
                 $this->xml = simplexml_load_file(\realpath('phpci.xml'));
                 return;
@@ -49,9 +49,9 @@ class XmlConfigurationLoader implements ConfigurationLoaderInterface
     {
         $configuration = new Configuration;
 
-        foreach($this->xml->suites->children() as $suite) {
-            foreach($suite->attributes() as $key => $value) {
-                if($key === 'name') {
+        foreach ($this->xml->suites->children() as $suite) {
+            foreach ($suite->attributes() as $key => $value) {
+                if ($key === 'name') {
                     $configuration->addSuite($value);
                 }
             }
