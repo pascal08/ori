@@ -7,7 +7,7 @@
 
 use Pascal\Container\Container\Container;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 // 1. Define the interface that will act as the abstract
 interface SomeInterface {}

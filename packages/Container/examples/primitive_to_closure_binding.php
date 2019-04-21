@@ -9,7 +9,7 @@
 
 use Pascal\Container\Container\Container;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 // 1. Define the class we are going to instantiate in the Closure
 class SomethingFancy {}
