@@ -7,6 +7,7 @@ parameters:
 
     # for "split" command
     directories_to_repositories:
+        packages/CI: 'git@github.com:pascal08/php-ci.git'
         packages/Container: 'git@github.com:pascal08/container.git'
         packages/EventSubscriber: 'git@github.com:pascal08/event-subscriber.git'
         packages/Router: 'git@github.com:pascal08/router.git'
