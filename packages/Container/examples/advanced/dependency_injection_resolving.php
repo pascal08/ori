@@ -15,8 +15,7 @@ interface SomeInterface {}
 // 2. Define the class that will act as the implementation
 class SomeImplementation implements SomeInterface {}
 
-// 3. Define a class that will act as a web controller from where we are going
-//    to resolve its dependencies.
+// 3. Define a class that will act as a web controller
 class WebController
 {
 
