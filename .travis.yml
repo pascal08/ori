@@ -24,6 +24,7 @@ after_script:
 # split monorepo to packages - only on merge to master
 - |
   if [[ $TRAVIS_EVENT_TYPE == "push" && $MONOREPO_SPLIT == true && $TRAVIS_BRANCH == "master" ]]; then
+    make monorepo.build
     make monorepo.install
     make monorepo.split
   fi
