@@ -12,3 +12,4 @@ parameters:
         packages/EventSubscriber: 'git@github.com:pascal08/event-subscriber.git'
         packages/Router: 'git@github.com:pascal08/router.git'
         packages/TaskScheduler: 'git@github.com:pascal08/task-scheduler.git'
+        packages/ApiGateway: 'git@github.com:pascal08/api-gateway.git'

@@ -1,0 +1,26 @@
+{
+    "name": "pascal/api-gateway",
+    "license": "MIT",
+    "description": "API Gateway Component",
+    "authors": [
+        {
+            "name": "Pascal Lubbers",
+            "email": "pascallubbers8@hotmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Pascal\\ApiGateway\\": "src"
+        }
+    },
+    "require": {
+        "php": "^7.1",
+        "psr/container": "^1.0"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^0.11",
+        "phpunit/phpunit": "^7.3",
+        "squizlabs/php_codesniffer": "^3.3",
+        "phpstan/phpstan-strict-rules": "^0.11.0"
+    }
+}
