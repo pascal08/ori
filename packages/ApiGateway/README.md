@@ -1,5 +1,5 @@
 # API Gateway
 
-[![Build Status](https://travis-ci.com/pascal08/container.svg?branch=master)](https://travis-ci.com/pascal08/container)
-[![Code Coverage](https://scrutinizer-ci.com/g/pascal08/container/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/pascal08/container/?branch=master)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/pascal08/container/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/pascal08/container/?branch=master)
+[![Build Status](https://travis-ci.com/pascal08/api-gateway.svg?branch=master)](https://travis-ci.com/pascal08/container)
+[![Code Coverage](https://scrutinizer-ci.com/g/pascal08/gateway/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/pascal08/gateway/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/pascal08/gateway/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/pascal08/gateway/?branch=master)
