@@ -1,0 +1,9 @@
+{
+  "name": "pascal/monorepo-builder",
+  "require": {
+    "php": "^7.1"
+  },
+  "require-dev": {
+    "symplify/monorepo-builder": "^8.3"
+  }
+}
